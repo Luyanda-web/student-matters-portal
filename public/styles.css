@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Matters Portal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="container nav">
+        <div class="brand">
+          <div class="brand-mark">SM</div>
+          <div>
+            <h1>Student Matters Portal</h1>
+          </div>
+        </div>
+        <nav>
+          <a href="#dashboard">Dashboard</a>
+          <a href="#cases">Cases</a>
+          <a href="#schedule">Schedule</a>
+          <a href="#reports">Reports</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container page">
+      <section class="hero" id="dashboard">
+        <div>
+          <span class="eyebrow">Student support system</span>
+          <h2>Manage cases, communication, meetings, and access with one portal.</h2>
+          <p>
+            Coordinate support for plagiarism, health issues, registration problems,
+            grade appeals, make-up exams, and other student concerns in one structured workflow.
+          </p>
+          <div class="cta-row">
+            <button class="primary-btn" id="focusCaseForm">Create new case</button>
+            <button class="secondary-btn" id="sendAccessNotice">Send access notice</button>
+          </div>
+        </div>
+        <div class="hero-panel">
+          <div class="mini-stat">
+            <span>Total matters</span>
+            <strong id="totalCases">0</strong>
+          </div>
+          <div class="mini-stat">
+            <span>Open sessions</span>
+            <strong id="openSessions">0</strong>
+          </div>
+          <div class="mini-stat">
+            <span>Upcoming meetings</span>
+            <strong id="upcomingMeetings">0</strong>
+          </div>
+        </div>
+      </section>
+
+      <section class="cards-grid" id="cases">
+        <article class="info-card">
+          <div class="card-head">
+            <span>Case intake</span>
+            <span class="badge accent">Live</span>
+          </div>
+          <h3>Student matter registration</h3>
+          <p>Capture and assign issues for academic support, medical claims, mark reviews, and appeals.</p>
+        </article>
+
+        <article class="info-card">
+          <div class="card-head">
+            <span>Communication</span>
+            <span class="badge success">Email + Teams</span>
+          </div>
+          <h3>Targeted outreach</h3>
+          <p>Send links and messages to student, coordinator, admin, and nominated staff based on case type.</p>
+        </article>
+
+        <article class="info-card">
+          <div class="card-head">
+            <span>Document control</span>
+            <span class="badge warning">Protected</span>
+          </div>
+          <h3>Conditional visibility</h3>
+          <p>Upload supporting evidence and show or hide files based on case permissions and access level.</p>
+        </article>
+      </section>
+
+      <section class="workspace">
+        <div class="panel form-panel">
+          <div class="panel-header">
+            <h3>New student matter</h3>
+          </div>
+
+          <form id="caseForm">
+            <div class="field-grid two-col">
+              <label>
+                <span>Student name</span>
+                <input type="text" name="studentName" placeholder="e.g. Lethabo Mokoena" required />
+              </label>
+
+              <label>
+                <span>Student number</span>
+                <input type="text" name="studentNumber" placeholder="e.g. 20251241" required />
+              </label>
+            </div>
+
+            <div class="field-grid two-col">
+              <label>
+                <span>Case type</span>
+                <select name="caseType" required>
+                  <option value="Plagiarism">Plagiarism</option>
+                  <option value="Make-up exam">Make-up exam</option>
+                  <option value="Registration">Registration</option>
+                  <option value="Remarking">Exam grading / remarking</option>
+                  <option value="Health issue">Health issue</option>
+                  <option value="Appeal">Appeal</option>
+                  <option value="Mark review">Mark review</option>
+                  <option value="Other">Other</option>
+                </select>
+              </label>
+
+              <label>
+                <span>Matter type</span>
+                <input type="text" name="matterType" value="Academic matter" />
+              </label>
+            </div>
+
+            <div class="field-grid two-col">
+              <label>
+                <span>Severity</span>
+                <select name="severity">
+                  <option value="Low">Low</option>
+                  <option value="Medium" selected>Medium</option>
+                  <option value="High">High</option>
+                  <option value="Critical">Critical</option>
+                </select>
+              </label>
+
+              <label>
+                <span>Coordinator</span>
+                <input type="text" name="coordinator" value="Program Coordinator" />
+              </label>
+            </div>
+
+            <div class="field-grid two-col">
+              <label>
+                <span>Meeting date/time</span>
+                <input type="datetime-local" name="meetingDate" required />
+              </label>
+
+              <label>
+                <span>Teams / Zoom link</span>
+                <input type="url" name="teamsLink" placeholder="https://teams.microsoft.com/..." />
+              </label>
+            </div>
+
+            <div class="field-grid two-col">
+              <label>
+                <span>Recipients</span>
+                <input type="text" name="recipients" placeholder="Comma separated emails" />
+              </label>
+
+              <label>
+                <span>Nominated users</span>
+                <input type="text" name="nominatedUsers" placeholder="Academic Officer, Student Support" />
+              </label>
+            </div>
+
+            <label>
+              <span>Session title</span>
+              <input type="text" name="sessionTitle" placeholder="Optional custom session title" />
+            </label>
+
+            <label>
+              <span>Notes / case summary</span>
+              <textarea name="notes" rows="4" placeholder="Add case context, requested action, or issue description"></textarea>
+            </label>
+
+            <label>
+              <span>Evidence / supporting documents</span>
+              <input type="file" id="documentFiles" multiple />
+            </label>
+
+            <div class="toggle-row">
+              <label class="checkbox-wrap">
+                <input type="checkbox" name="accessGranted" checked />
+                <span>Access granted to selected student/users</span>
+              </label>
+            </div>
+
+            <div class="submit-row">
+              <button type="submit" class="primary-btn">Save case</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="panel list-panel">
+          <div class="panel-header with-action">
+            <h3>Active student matters</h3>
+            <button class="ghost-btn" id="refreshCases">Refresh</button>
+          </div>
+          <div id="caseList" class="stack-list"></div>
+        </div>
+      </section>
+
+      <section class="workspace two-column" id="schedule">
+        <div class="panel">
+          <div class="panel-header">
+            <h3>Scheduling & notifications</h3>
+          </div>
+          <div id="notificationList" class="tiny-list"></div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-header">
+            <h3>Document visibility</h3>
+          </div>
+          <div id="documentList" class="tiny-list"></div>
+        </div>
+      </section>
+
+      <section class="panel reports-panel" id="reports">
+        <div class="panel-header">
+          <h3>Comprehensive report</h3>
+        </div>
+        <div id="reportArea" class="report-box"></div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
+
